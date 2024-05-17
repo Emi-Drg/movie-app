@@ -37,31 +37,31 @@ export const MovieProvider = ({ children }) => {
             `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
           );
 
-          if (!movieResponse) {
-            throw new Error("Failed to fetch the movie details ...");
-          }
           const movieData = await movieResponse.json();
 
           //we get all the details we need
 
-          const poster = movieData.poster_path;
-          const releaseYear = movieData.release_date
+          const poster = movieData?.poster_path || "";
+          const releaseYear = movieData?.release_date
             ? movieData.release_date.substring(0, 4)
             : "-";
-          const duration = movieData.runtime ? movieData.runtime + "min" : "-";
+          const duration = movieData?.runtime ? movieData.runtime + "min" : "-";
 
           // for getting directors we need another api call at another endpoint
 
           const creditsResponse = await fetch(
             `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`
           );
+          let directors = [];
           if (!creditsResponse.ok) {
-            throw new Error("Failed to fetch movie credits...");
+            directors = ["N/A"];
+            // throw new Error("Failed to fetch movie credits...");
+          } else {
+            const creditsData = await creditsResponse.json();
+            directors = creditsData.crew
+              .filter((person) => person.job === "Director")
+              .map((director) => director.name);
           }
-          const creditsData = await creditsResponse.json();
-          const directors = creditsData.crew
-            .filter((person) => person.job === "Director")
-            .map((director) => director.name);
 
           return { ...movie, poster, releaseYear, directors, duration };
         })
