@@ -4,6 +4,9 @@ export const MovieContext = createContext();
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
+// We're using context to store our state globally and avoid prop drilling
+// Also , here we're fetching our data about the movies and try to retrieve the info about the favorite movies
+
 export const MovieProvider = ({ children }) => {
   const [topMovies, setTopMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//Here we implement a Nav component which is going to use React router
+
 const Navbar = () => {
   return (
     <nav className="bg-gray-800 p-4 font-serif">

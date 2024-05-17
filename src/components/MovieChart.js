@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { MovieContext } from "../context/movieContext";
 import { PieChart, Pie, Tooltip, Cell, Legend } from "recharts";
 
+//Here we're using recharts, a library which helps us rendering a beautiful Pie Chart
+
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#BACD92"];
 const MovieChart = () => {
   const { topMovies } = useContext(MovieContext);

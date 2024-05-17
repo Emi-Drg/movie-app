@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { MovieContext } from "../context/movieContext";
 import placeholderImage from "../images/placeholder.jpg";
 
+//Here we're making a Card which will contain all details of the movies
+
 const Card = ({ movie, isFavorite, showDelete }) => {
   const { poster, duration, directors, releaseYear, title, overview, id } =
     movie;
@@ -12,6 +14,8 @@ const Card = ({ movie, isFavorite, showDelete }) => {
   const fallBackImageUrl = poster
     ? `https://image.tmdb.org/t/p/w500${poster}`
     : placeholderImage;
+
+  // Here , handle Toggle Favorites is a function wich helps us to store the movies in Local Storage
 
   const handleToggleFavorites = (id) => {
     const savedItems = JSON.parse(localStorage.getItem("favorites")) || [];

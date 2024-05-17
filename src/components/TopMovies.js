@@ -3,6 +3,8 @@ import { useContext } from "react";
 import Card from "./Card";
 import { MovieContext } from "../context/movieContext";
 
+//We're implementing the TopMovies Component which is going to have a loading spinner if the data is not fetched yet
+
 const TopMovies = () => {
   const { topMovies, favoriteIds, loadingData } = useContext(MovieContext);
 

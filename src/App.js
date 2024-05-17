@@ -6,6 +6,8 @@ import Favorites from "./components/Favorites";
 import { MovieProvider } from "./context/movieContext";
 import "@fortawesome/fontawesome-free/css/all.css";
 
+//Here we're setting our routes
+
 function App() {
   return (
     <MovieProvider>
